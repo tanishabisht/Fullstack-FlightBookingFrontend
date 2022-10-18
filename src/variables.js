@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:4000';
+const baseURL = 'https://flight-booking-cigs.herokuapp.com';
 
 const variables = { baseURL };
 

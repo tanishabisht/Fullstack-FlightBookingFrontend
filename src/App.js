@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar, Footer } from './Components';
-import { MainPage, BookingPage } from './Pages';
+import { MainPage, BookingPage, ConfirmationPage } from './Pages';
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
       <Navbar />
       <div className="app">
         <Routes>
+          <Route path="/confirm/:id" element={<ConfirmationPage />} />
           <Route path="/:id" element={<BookingPage />} />
           <Route path="/" element={<MainPage />} />
         </Routes>

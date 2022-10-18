@@ -1,11 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { TravellerDetailCard } from '../Components';
 import axios from 'axios';
 import VAR from '../variables';
 import './pages.scss';
 
-const BookingPage = () => {
+const ConfirmationPage = () => {
   const params = useParams();
 
   const [flight, setFlight] = useState(null);
@@ -21,7 +20,7 @@ const BookingPage = () => {
 
   return (
     <div className="main_container">
-      <Link to={`/`}>Go Back</Link>
+      <Link to={`/`}>Go Home Page</Link>
       <div className="card_container">
         <h1>{flight ? flight.airlineName : null}</h1>
         <p>{flight ? flight.flightNumber : null}</p>
@@ -33,9 +32,8 @@ const BookingPage = () => {
         <p>{flight ? flight.toPlace : null}</p>
         <p>{flight ? flight.toTerminal : null}</p>
       </div>
-      {flight ? <TravellerDetailCard flightId={flight} /> : null}
     </div>
   );
 };
 
-export default BookingPage;
+export default ConfirmationPage;
