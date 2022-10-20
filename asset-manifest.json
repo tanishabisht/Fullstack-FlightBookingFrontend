@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/flightbooking/static/css/main.c8b1b054.css",
-    "main.js": "/flightbooking/static/js/main.a2846299.js",
+    "main.css": "/flightbooking/static/css/main.8788daa6.css",
+    "main.js": "/flightbooking/static/js/main.f04ba5de.js",
     "index.html": "/flightbooking/index.html",
-    "main.c8b1b054.css.map": "/flightbooking/static/css/main.c8b1b054.css.map",
-    "main.a2846299.js.map": "/flightbooking/static/js/main.a2846299.js.map"
+    "main.8788daa6.css.map": "/flightbooking/static/css/main.8788daa6.css.map",
+    "main.f04ba5de.js.map": "/flightbooking/static/js/main.f04ba5de.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8b1b054.css",
-    "static/js/main.a2846299.js"
+    "static/css/main.8788daa6.css",
+    "static/js/main.f04ba5de.js"
   ]
 }
