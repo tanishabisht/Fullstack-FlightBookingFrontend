@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Flight-Booking-Frontend/static/css/main.c8b1b054.css",
+    "main.js": "/Flight-Booking-Frontend/static/js/main.a2846299.js",
+    "index.html": "/Flight-Booking-Frontend/index.html",
+    "main.c8b1b054.css.map": "/Flight-Booking-Frontend/static/css/main.c8b1b054.css.map",
+    "main.a2846299.js.map": "/Flight-Booking-Frontend/static/js/main.a2846299.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8b1b054.css",
+    "static/js/main.a2846299.js"
+  ]
+}
