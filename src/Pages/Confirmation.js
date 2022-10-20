@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { TravellerDetailCard, FlightDetailCard } from '../Components';
+import { TravellerDetailCard, FlightDetailCard, Loader } from '../Components';
 import axios from 'axios';
 import VAR from '../variables';
 import './pages.scss';
@@ -10,8 +10,10 @@ const ConfirmationPage = () => {
 
   const [booking, setBooking] = useState(null);
   const [flight, setFlight] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`${VAR.baseURL}/booking/${params.bookingId}`)
       .then((res_booking) => {
@@ -22,10 +24,17 @@ const ConfirmationPage = () => {
           .then((res_flight) => {
             console.log(res_flight.data.flight);
             setFlight(res_flight.data.flight);
+            setIsLoading(false);
           })
-          .catch((err_flight) => console.log(err_flight));
+          .catch((err_flight) => {
+            console.log(err_flight);
+            setIsLoading(false);
+          });
       })
-      .catch((err_booking) => console.log(err_booking));
+      .catch((err_booking) => {
+        console.log(err_booking);
+        setIsLoading(false);
+      });
   }, [params]);
 
   return (
@@ -41,14 +50,30 @@ const ConfirmationPage = () => {
 
       <div className="traveller_detail_container">
         <h2 className="subHeader">Below are the traveller's details</h2>
-        <TravellerDetailCard {...booking} />
+        {isLoading === true ? (
+          <Loader />
+        ) : booking !== null ? (
+          <TravellerDetailCard {...booking} />
+        ) : (
+          <div className="toaster_container toaster_container_error">
+            User Information not loaded
+          </div>
+        )}
       </div>
 
       <div>
         <h2 className="subHeader">
           Below are the flight's details you have booked
         </h2>
-        {flight ? <FlightDetailCard {...flight} isDetailPage={true} /> : null}
+        {isLoading === true ? (
+          <Loader />
+        ) : flight !== null ? (
+          <FlightDetailCard {...flight} isDetailPage={true} />
+        ) : (
+          <div className="toaster_container toaster_container_error">
+            Flight data not loaded.
+          </div>
+        )}
       </div>
     </div>
   );

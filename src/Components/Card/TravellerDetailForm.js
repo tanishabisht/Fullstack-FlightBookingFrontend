@@ -1,14 +1,15 @@
 import './card.scss';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import VAR from '../../variables';
 import emailjs from 'emailjs-com';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { FullPageLoader } from '../index';
 
 const TravellerDetailForm = ({ flightId }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const service_id = 'service_806ruid';
   const template_id = 'template_uw50gqm';
@@ -33,22 +34,26 @@ const TravellerDetailForm = ({ flightId }) => {
   };
 
   const onSubmitTravellerDetailEvent = (values, { setSubmitting }) => {
+    setIsLoading(true);
     const { name, email, phone } = values;
-    const data = { name, email, number: phone, flightId };
+    const _data = { name, email, number: phone, flightId };
     axios
-      .post(`${VAR.baseURL}/booking`, data)
+      .post(`${VAR.baseURL}/booking`, _data)
       .then((res) => {
         console.log(res.data.booking);
-        const data = {
+        const mail_data = {
           email: email,
           name: name,
         };
-        emailjs.send(service_id, template_id, data, user_id).then(
+        emailjs.send(service_id, template_id, mail_data, user_id).then(
           () => {
-            toast.success('Email Sent Successfully!', { theme: 'dark' });
             navigate('/confirm/' + res.data.booking._id);
+            setIsLoading(true);
           },
-          () => toast.error('Uh Oh! Some error occured', { theme: 'dark' })
+          () => {
+            navigate('/error');
+            setIsLoading(true);
+          }
         );
       })
       .catch((err) => console.log(err));
@@ -86,11 +91,7 @@ const TravellerDetailForm = ({ flightId }) => {
           </Form>
         )}
       </Formik>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar
-      />
+      {isLoading === true ? <FullPageLoader /> : null}
     </div>
   );
 };

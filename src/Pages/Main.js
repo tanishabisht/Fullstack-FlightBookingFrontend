@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FlightDetailCard } from '../Components';
+import { FlightDetailCard, Loader } from '../Components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import VAR from '../variables';
@@ -9,6 +9,8 @@ const MainPage = () => {
   const initalValuesVar = { origin: '', dest: '', date: '' };
 
   const [flight, setFlight] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(flight);
 
   const validateEvent = (values) => {
     const errors = {};
@@ -25,15 +27,21 @@ const MainPage = () => {
   };
 
   const onSubmitEvent = (values, { setSubmitting }) => {
+    setFlight(null);
     const { origin, dest, date } = values;
     console.log(`${VAR.baseURL}/flight/${origin}/${dest}/${date}`);
+    setIsLoading(true);
     axios
       .get(`${VAR.baseURL}/flight/${origin}/${dest}/${date}`)
       .then((res) => {
         console.log(res.data.flights);
         setFlight(res.data.flights);
+        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
     console.log('works!!!');
     setSubmitting(false);
   };
@@ -92,6 +100,7 @@ const MainPage = () => {
         </Formik>
       </div>
       <div className="result_container">
+        {isLoading === true ? <Loader /> : null}
         {flight === null ? null : flight.length === 0 ? (
           <div className="toaster_container toaster_container_error">
             No data found

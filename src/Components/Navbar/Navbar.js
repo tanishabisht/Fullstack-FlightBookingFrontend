@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="nav">
       <p className="nav_text">EASYtrip</p>
-      <Link className="nav_goBack" to={`/main`}>
+      <Link className="nav_goBack" to={`/`}>
         Go Home Page
       </Link>
     </div>

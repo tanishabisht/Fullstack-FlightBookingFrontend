@@ -1,0 +1,31 @@
+.loader_container {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.fullPage_loader_container {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.fullPage_loader_container:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(5, 5, 5, 0.8), rgba(0, 0, 0, 0.8));
+  z-index: -1;
+}

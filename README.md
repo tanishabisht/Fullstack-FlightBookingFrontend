@@ -34,4 +34,4 @@ CONGRATULATIONS! YOU HAVE SUCCESSFULLY BOOKED YOUR FLIGHT
 
 ## Tech Stacks Used
 
-`React JS` `formik` `axios` `emailjs-com` `date-fns` `node-sass` `react-toastify` `gh-pages`
+`React JS` `formik` `axios` `emailjs-com` `date-fns` `node-sass` `react-loading` `react-toastify` `gh-pages`
