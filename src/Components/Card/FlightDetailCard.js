@@ -15,6 +15,7 @@ const FlightDetailCard = (props) => {
     toPlace,
     toTerminal,
     _id,
+    isDetailPage = false,
   } = props;
 
   const convertToAbbreviation = (cityName) => {
@@ -56,9 +57,11 @@ const FlightDetailCard = (props) => {
       </div>
       <div className="col">
         <p className="data_price">{price}</p>
-        <Link className="data_btn" to={`/${_id}`}>
-          Book
-        </Link>
+        {isDetailPage ? null : (
+          <Link className="data_btn" to={`/${_id}`}>
+            Book
+          </Link>
+        )}
       </div>
     </div>
   );

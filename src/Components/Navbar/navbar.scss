@@ -1,13 +1,32 @@
-.nav_container {
+.nav {
   padding: 1rem;
   background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 3rem;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.nav_text {
-  color: #343434;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 900;
-  font-size: 1.5rem;
+  &_text {
+    color: #343434;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+
+  &_goBack {
+    padding: 5px 15px;
+    text-decoration: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: #f77728;
+    color: #fff;
+    margin-top: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ef6610;
+    }
+  }
 }

@@ -8,7 +8,7 @@ function App() {
       <Navbar />
       <div className="app">
         <Routes>
-          <Route path="/confirm/:id" element={<ConfirmationPage />} />
+          <Route path="/confirm/:bookingId" element={<ConfirmationPage />} />
           <Route path="/:id" element={<BookingPage />} />
           <Route path="/" element={<MainPage />} />
         </Routes>

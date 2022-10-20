@@ -93,7 +93,9 @@ const MainPage = () => {
       </div>
       <div className="result_container">
         {flight === null ? null : flight.length === 0 ? (
-          <div className="toaster_container">No data found</div>
+          <div className="toaster_container toaster_container_error">
+            No data found
+          </div>
         ) : (
           flight.map((data, id) => <FlightDetailCard key={id} {...data} />)
         )}

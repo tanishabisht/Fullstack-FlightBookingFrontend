@@ -1,6 +1,6 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { TravellerDetailCard } from '../Components';
+import { FlightDetailCard, TravellerDetailForm } from '../Components';
 import axios from 'axios';
 import VAR from '../variables';
 import './pages.scss';
@@ -21,19 +21,10 @@ const BookingPage = () => {
 
   return (
     <div className="main_container">
-      <Link to={`/`}>Go Back</Link>
-      <div className="card_container">
-        <h1>{flight ? flight.airlineName : null}</h1>
-        <p>{flight ? flight.flightNumber : null}</p>
-        <p>{flight ? flight.fromDate : null}</p>
-        <p>{flight ? flight.fromPlace : null}</p>
-        <p>{flight ? flight.fromTerminal : null}</p>
-        <p>{flight ? flight.price : null}</p>
-        <p>{flight ? flight.toDate : null}</p>
-        <p>{flight ? flight.toPlace : null}</p>
-        <p>{flight ? flight.toTerminal : null}</p>
+      <div>
+        {flight ? <FlightDetailCard {...flight} isDetailPage={true} /> : null}
       </div>
-      {flight ? <TravellerDetailCard flightId={flight} /> : null}
+      <div>{flight ? <TravellerDetailForm flightId={flight} /> : null}</div>
     </div>
   );
 };

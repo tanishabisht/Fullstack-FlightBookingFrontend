@@ -3,7 +3,16 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 1rem;
   padding: 2rem;
-  width: 100%;
+  width: 40rem;
+  margin: 1rem;
+  font-size: 15px;
+}
+.traveller_card_container {
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 40rem;
   margin: 1rem;
   font-size: 15px;
 }
@@ -78,5 +87,61 @@
       cursor: pointer;
       background-color: #ef6610;
     }
+  }
+}
+
+.main_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.traveller_detail_card_container {
+  padding: 2rem;
+  width: 40rem;
+  margin: 1rem;
+  font-size: 15px;
+
+  button {
+    padding: 5px 30px;
+    text-decoration: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: #f77728;
+    color: #fff;
+    margin-top: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ef6610;
+    }
+  }
+}
+
+.input_container {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 10px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 95%;
+    &:focus {
+      outline: none;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  span {
+    font-size: 12px;
+    color: rgb(205, 80, 80);
   }
 }
