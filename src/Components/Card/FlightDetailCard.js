@@ -58,7 +58,7 @@ const FlightDetailCard = (props) => {
       <div className="col">
         <p className="data_price">{price}</p>
         {isDetailPage ? null : (
-          <Link className="data_btn" to={`/${_id}`}>
+          <Link className="data_btn" to={`/booking/${_id}`}>
             Book
           </Link>
         )}

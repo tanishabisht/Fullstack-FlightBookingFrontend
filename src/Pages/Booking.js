@@ -11,7 +11,7 @@ const BookingPage = () => {
   const [flight, setFlight] = useState(null);
   useEffect(() => {
     axios
-      .get(`${VAR.baseURL}/flight/${params.id}`)
+      .get(`${VAR.baseURL}/flight/${params.flightId}`)
       .then((res) => {
         console.log(res.data.flight);
         setFlight(res.data.flight);
