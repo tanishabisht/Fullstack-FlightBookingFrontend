@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar, Footer } from './Components';
+import { Navbar } from './Components';
 import { MainPage, BookingPage, ConfirmationPage } from './Pages';
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
           <Route path="/" element={<MainPage />} />
         </Routes>
       </div>
-      <Footer />
     </BrowserRouter>
   );
 }

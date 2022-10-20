@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 code {
@@ -10,4 +10,8 @@ code {
 * {
   margin: 0;
   padding: 0;
+}
+
+.app {
+  height: calc(100vh - 6.8rem);
 }

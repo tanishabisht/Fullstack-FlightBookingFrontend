@@ -1,5 +1,82 @@
-.card_container {
-  background-color: aqua;
-  padding: 1rem;
+.flight_card_container {
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
   margin: 1rem;
+  font-size: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row_sub {
+  display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.data {
+  &_airlineName {
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+  &_flightNumber {
+    color: #aaa;
+    font-weight: 300;
+  }
+
+  &_place {
+    font-size: 1.2rem;
+    margin: 0px 10px 0px 0px;
+  }
+
+  &_time {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &_date {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &_terminal {
+    width: 9rem;
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaa;
+  }
+
+  &_price {
+    font-weight: 600;
+    font-size: 1.2rem;
+    &:before {
+      content: '₹ ';
+    }
+  }
+
+  &_btn {
+    padding: 5px 30px;
+    text-decoration: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: #f77728;
+    color: #fff;
+    margin-top: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ef6610;
+    }
+  }
 }

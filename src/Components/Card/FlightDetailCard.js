@@ -1,5 +1,7 @@
 import './card.scss';
 import { Link } from 'react-router-dom';
+import { format, parseISO } from 'date-fns';
+import VAR from '../../variables';
 
 const FlightDetailCard = (props) => {
   const {
@@ -15,18 +17,49 @@ const FlightDetailCard = (props) => {
     _id,
   } = props;
 
+  const convertToAbbreviation = (cityName) => {
+    const _airportObj = VAR.airportStateNamesImp.find(
+      (airportObj) => airportObj.city_name === cityName
+    );
+    return _airportObj.IATA_code;
+  };
+
   return (
-    <div className="card_container">
-      <p>{airlineName}</p>
-      <p>{flightNumber}</p>
-      <p>{fromDate}</p>
-      <p>{fromPlace}</p>
-      <p>{fromTerminal}</p>
-      <p>{price}</p>
-      <p>{toDate}</p>
-      <p>{toPlace}</p>
-      <p>{toTerminal}</p>
-      <Link to={`/${_id}`}>Book</Link>
+    <div className="flight_card_container row">
+      <div className="col">
+        <p className="data_airlineName">{airlineName}</p>
+        <p className="data_flightNumber">{flightNumber}</p>
+      </div>
+      <div className="col">
+        <div className="row_sub">
+          <span className="data_place">{convertToAbbreviation(fromPlace)}</span>
+          <span className="data_time">
+            {format(parseISO(fromDate), 'HH:mm')}
+          </span>
+        </div>
+        <p className="data_date">
+          {format(parseISO(fromDate), 'eee, d MMM yyyy')}
+        </p>
+        <br />
+        <p className="data_terminal">{fromTerminal}</p>
+      </div>
+      <div className="col">
+        <div className="row_sub">
+          <span className="data_place">{convertToAbbreviation(toPlace)}</span>
+          <span className="data_time">{format(parseISO(toDate), 'HH:mm')}</span>
+        </div>
+        <p className="data_date">
+          {format(parseISO(toDate), 'eee, d MMM yyyy')}
+        </p>
+        <br />
+        <p className="data_terminal">{toTerminal}</p>
+      </div>
+      <div className="col">
+        <p className="data_price">{price}</p>
+        <Link className="data_btn" to={`/${_id}`}>
+          Book
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FlightDetailCard } from '../Components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
@@ -6,30 +6,29 @@ import VAR from '../variables';
 import './pages.scss';
 
 const MainPage = () => {
-  const initalValuesVar = { origin: '', destination: '', date: '' };
+  const initalValuesVar = { origin: '', dest: '', date: '' };
 
   const [flight, setFlight] = useState(null);
-  useEffect(() => {}, []);
 
   const validateEvent = (values) => {
     const errors = {};
     if (!values.origin) {
       errors.origin = 'Required';
     }
-
-    // else if (
-    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.origin)
-    // ) {
-    //   errors.origin = 'Invalid email address';
-    // }
+    if (!values.dest) {
+      errors.dest = 'Required';
+    }
+    if (!values.date) {
+      errors.date = 'Required';
+    }
     return errors;
   };
 
   const onSubmitEvent = (values, { setSubmitting }) => {
-    const { origin, destination, date } = values;
-    console.log(`${VAR.baseURL}/flight/${origin}/${destination}/${date}`);
+    const { origin, dest, date } = values;
+    console.log(`${VAR.baseURL}/flight/${origin}/${dest}/${date}`);
     axios
-      .get(`${VAR.baseURL}/flight/${origin}/${destination}/${date}`)
+      .get(`${VAR.baseURL}/flight/${origin}/${dest}/${date}`)
       .then((res) => {
         console.log(res.data.flights);
         setFlight(res.data.flights);
@@ -39,35 +38,62 @@ const MainPage = () => {
     setSubmitting(false);
   };
 
-  //localhost:3000/flight/Delhi/Mumbai/2020-08-03
-
   return (
     <div className="main_container">
-      <Formik
-        initialValues={initalValuesVar}
-        validate={validateEvent}
-        onSubmit={onSubmitEvent}
-      >
-        {({ isSubmitting }) => (
-          <Form className="main_form">
-            <Field type="text" name="origin" placeholder="Origin" />
-            <ErrorMessage name="origin" component="div" />
-            <Field type="text" name="destination" placeholder="Destination" />
-            <ErrorMessage name="destination" component="div" />
-            <Field type="date" name="date" placeholder="Start Date" />
-            <ErrorMessage name="date" component="div" />
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
-          </Form>
-        )}
-      </Formik>
-
-      <div>
-        {flight === null ? (
-          <h1>Please make a search</h1>
-        ) : flight.length === 0 ? (
-          <h1>No data found</h1>
+      <div className="form_container">
+        <h1 className="form_heading">Search flights</h1>
+        <Formik
+          initialValues={initalValuesVar}
+          validate={validateEvent}
+          onSubmit={onSubmitEvent}
+        >
+          {({ isSubmitting }) => (
+            <Form className="main_form">
+              <div className="input_row">
+                <div className="input_col">
+                  <Field
+                    type="text"
+                    name="origin"
+                    placeholder="Origin"
+                    className="input_right"
+                  />
+                  <ErrorMessage name="origin" component="span" />
+                </div>
+                <div className="input_col">
+                  <Field
+                    type="text"
+                    name="dest"
+                    placeholder="Destination"
+                    className="input_left"
+                  />
+                  <ErrorMessage name="dest" component="span" />
+                </div>
+              </div>
+              <div className="input_row">
+                <div className="input_col">
+                  <Field
+                    type="date"
+                    name="date"
+                    placeholder="Start Date"
+                    className="input_right"
+                  />
+                  <ErrorMessage name="date" component="span" />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="submit_button"
+                >
+                  Search
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
+      <div className="result_container">
+        {flight === null ? null : flight.length === 0 ? (
+          <div className="toaster_container">No data found</div>
         ) : (
           flight.map((data, id) => <FlightDetailCard key={id} {...data} />)
         )}
