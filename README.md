@@ -1,37 +1,32 @@
 # Flight Booking Frontend
 
-[This](https://github.com/tanishabisht/Flight-Booking-Backend) repository contains the backend for this application.
-The application is written in React JS, and the state is maintained via React Hooks.
-The style is done entirely with scss.
+This repository contains the frontend for a flight booking application. The backend can be found [here](https://github.com/tanishabisht/Fullstack-FlightBookingBackend). The application is built using React JS, with state management via React Hooks, and styled entirely with SCSS.
 
-## How to run it locally
+## Intructions to run the application
 
-1. Firstly make sure your have the following installed in your system
-   - node version: v16.13.2
-   - npm version: 8.19.2
-2. Clone the repository and Open in your suitable development environment (e.g. VS Code)
-3. Open the terminal of the editor and type:
-   - `npm install` to install all the node packages and dependancies from [`package.json`](/package.json)
-   - `npm start` or `node app.js` to run the server
+1. Ensure you have the following installed on your system:
+   - Node version: v16.20.2
+   - `nvm install v16.20.2`
+   - `nvm use v16.20.2`
+2. Clone the repository and open it in your preferred development environment (e.g., VS Code).
+3. Open the terminal in your editor and run:
+   - `npm install` to install all the node packages and dependencies from [`package.json`](/package.json).
+   - `npm start` to start the server.
 
-## Deployment
 
-The frontend for this application is deployed using GitHub pages
-The backend for this application is deployed using Heroku to the following URL: https://flight-booking-cigs.herokuapp.com
-
-## How to use it
+## Screenshot
 
 ![How To Image](/howTo.png)
 
-- `STEP 1:` Enter the origin, destination and date when you want to book the flight
-- `STEP 2:` Wait for the Results
-- `STEP 3:` Choose the flight you would like to book
-- `STEP 4:` Enter your personal details: name, email id, phone number
-- `NOTE:` Make sure your details are entered correctly specially your email id else you wont receive confirmation in your mail.
-- `STEP 5:` Once done, you will be directed to the confirmation page.
+1. **Enter Details**: Input the origin, destination, and date for your flight.
+2. **View Results**: Wait for the search results.
+3. **Choose Flight**: Select the flight you want to book.
+4. **Enter Personal Details**: Provide your name, email, and phone number.
+   - **Note**: Ensure your email is correct to receive the booking confirmation.
+5. **Confirmation**: You will be directed to the confirmation page once done.
 
-CONGRATULATIONS! YOU HAVE SUCCESSFULLY BOOKED YOUR FLIGHT
+**Congratulations! You have successfully booked your flight.**
 
-## Tech Stacks Used
+## Technologies used
 
 `React JS` `formik` `axios` `emailjs-com` `date-fns` `node-sass` `react-loading` `react-toastify` `gh-pages`
